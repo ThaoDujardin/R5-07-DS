@@ -1,0 +1,31 @@
+name: Q3
+
+on: [push]
+
+permissions:
+  contents: write
+
+jobs:
+  archiver:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Générer Q3_archive_java.txt
+        run: |
+          NAME="Thao Dujardin"
+          {
+            echo "Nom et prénom: $NAME"
+            echo "===== Q3.java ====="
+            cat Q3.java
+          } > Q3_archive_java.txt
+
+      - name: Commit et push
+        run: |
+          git config user.name thaodujardin
+          git config user.email thaodujardin@gmail.com
+          git add Q3_archive_java.txt
+          git commit -m "Q3: archiver Q3.java1"
+          git push
