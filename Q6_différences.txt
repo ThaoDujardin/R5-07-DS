@@ -1,0 +1,25 @@
+--- Q6_archive_08-10-2025-142753.txt	2025-10-08 14:29:02.970283651 +0000
++++ Q6_archive_08-10-2025-142903.txt	2025-10-08 14:29:03.019283929 +0000
+@@ -12,8 +12,6 @@
+ 		int n = Integer.parseInt(args[0]);
+ 		StringBuilder sb = new StringBuilder();
+ 
+-		// commentaire de difference
+-
+ 		for (int i = n; i >= 1; i--)
+ 		{
+ 			sb.setLength(0);
+@@ -21,6 +19,7 @@
+ 			{
+ 				sb.append( 'x' );
+ 				sb.append(' ');
++				sb.append(' ');
+ 			}
+ 			System.out.println(sb.toString());
+ 		}
+@@ -28,4 +27,4 @@
+ }
+ 
+ ===== wc Q6.java =====
+-caractères=26 lignes=401
++caractères=25 lignes=389
