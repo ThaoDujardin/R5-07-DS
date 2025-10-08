@@ -1,7 +1,6 @@
 name: Q1
 
-on:
-  workflow_dispatch:
+on: [push]
 
 permissions:
   contents: write
