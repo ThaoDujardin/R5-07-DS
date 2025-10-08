@@ -1,0 +1,35 @@
+# Ce nouveau fichier créé sera poussé vers le dépôt.
+name: Q2
+
+on: [push]
+
+permissions:
+  contents: write
+
+jobs:
+  archiver:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Générer Q2_archive_README.md
+        run: |
+          NAME="Thao Dujardin"
+          DATE="$(date -u '+%Y-%m-%d %H:%M:%SZ')"
+          {
+            echo "Nom et prénom: $NAME"
+            echo "Date et heure d'exécution (UTC): $DATE"
+            echo ""
+            echo "===== Contenu de README.md ====="
+            cat README.md
+          } > Q2_archive_README.md
+
+      - name: Commit et push
+        run: |
+          git config user.email "thaodujardin@gmail.com"
+          git config user.name "thaodujardin"
+          git add Q2_archive_README.md
+          git commit -m "Q2: archiver README avec métadonnées"
+          git push
