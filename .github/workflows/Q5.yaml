@@ -1,0 +1,51 @@
+# Q5 :
+# Créer un nouveau workflow nommé Q5.yaml. Ce workflow créera un ficher Q5_archive_date.txt :
+# • qui contiendra votre nom et prénom, et le fichierQ5.java du répertoire
+# • la date dans le nom du fichier sera au format JJ-MM-AAAA
+# Ce nouveau fichier créé sera poussé vers le dépôt.
+# Recopier Q4.java en Q5.java (et modifier la classe Q4 en Q5, bien entendu)
+# Créer deux ‘issues’ :
+# 1. inverser l’affichage du triangle
+# 2. afficher des ‘x’ à la place des ‘*’
+# Traiter les issues séparément dans Q5, puis fermer chaque issue une fois le programme Q5.java
+# correctement modifié.
+name: Q5
+
+on:
+  workflow_dispatch:
+    inputs:
+      nom_prenom:
+        description: "Votre nom et prénom (optionnel si vars.STUDENT_NAME est défini)"
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  archiver:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Générer Q5_archive_date.txt (JJ-MM-AAAA)
+        run: |
+          NAME="Thao Dujardin"
+          D="$(date '+%d-%m-%Y')"
+          F="Q5_archive_${D}.txt"
+          {
+            echo "Nom et prénom: $NAME"
+            echo "===== Q5.java ====="
+            cat Q5.java
+          } > "$F"
+          echo "FICHIER=$F" >> $GITHUB_ENV
+
+      - name: Commit et push
+        run: |
+          git config user.email "thaodujardin@gmail.com"
+          git config user.name "thaodujardin"
+          git add "$FICHIER" || git add $(ls Q5_archive_*.txt | tail -n1)
+          git commit -m "Q5: archiver Q5.java avec date"
+          git push
