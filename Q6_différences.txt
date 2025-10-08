@@ -1,0 +1,16 @@
+--- Q6_archive_08-10-2025-141640.txt	2025-10-08 14:21:13.001096031 +0000
++++ Q6_archive_08-10-2025-142113.txt	2025-10-08 14:21:13.062095501 +0000
+@@ -19,7 +19,6 @@
+ 			{
+ 				sb.append( 'x' );
+ 				sb.append(' ');
+-				sb.append(' ');
+ 			}
+ 			System.out.println(sb.toString());
+ 		}
+@@ -27,4 +26,4 @@
+ }
+ 
+ ===== wc Q6.java =====
+-caractères=25 lignes=389
++caractères=24 lignes=369
