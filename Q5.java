@@ -10,7 +10,7 @@ public class Q5
 		int n = Integer.parseInt(args[0]);
 		StringBuilder sb = new StringBuilder();
 
-		for (int i = 1; i <= n; i++)
+		for (int i = n; i >= 1; i--)
 		{
 			sb.setLength(0);
 			for (int j = 0; j < i; j++)
