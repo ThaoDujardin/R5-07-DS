@@ -20,8 +20,8 @@ jobs:
 
       - name: Commit et push
         run: |
-          git config user.email "thaodujardin@gmail.com"
-          git config user.name "thaodujardin"
+          git config user.name thaodujardin
+          git config user.email thaodujardin@gmail.com
           git add Q1_archive_TOTO.txt
           git commit -m "Q1: archiver TOTO"
           git push
