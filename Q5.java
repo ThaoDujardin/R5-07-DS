@@ -15,7 +15,7 @@ public class Q5
 			sb.setLength(0);
 			for (int j = 0; j < i; j++)
 			{
-				sb.append( j + 1 );
+				sb.append( 'x' );
 				sb.append(' ');
 			}
 			System.out.println(sb.toString());
