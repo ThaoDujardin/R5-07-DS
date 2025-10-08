@@ -1,0 +1,27 @@
+name: Q1
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  archiver:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Générer Q1_archive_TOTO.txt
+        run: |
+          cp toto.txt Q1_archive_TOTO.txt
+
+      - name: Commit et push
+        run: |
+          git config user.email "thaodujardin@gmail.com"
+          git config user.name "thaodujardin"
+          git add Q1_archive_TOTO.txt
+          git commit -m "Q1: archiver TOTO"
+          git push
