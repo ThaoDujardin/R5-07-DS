@@ -27,8 +27,8 @@ jobs:
 
       - name: Commit et push
         run: |
-          git config user.email "thaodujardin@gmail.com"
-          git config user.name "thaodujardin"
+          git config user.name thaodujardin
+          git config user.email thaodujardin@gmail.com
           git add "$FICHIER" || git add $(ls Q5_archive_*.txt | tail -n1)
           git commit -m "Q5: archiver Q5.java avec date1"
           git push

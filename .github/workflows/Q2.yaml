@@ -27,8 +27,8 @@ jobs:
 
       - name: Commit et push
         run: |
-          git config user.email "thaodujardin@gmail.com"
-          git config user.name "thaodujardin"
+          git config user.name thaodujardin
+          git config user.email thaodujardin@gmail.com
           git add Q2_archive_toto.txt
           git commit -m "Q2: archiver toto.txt avec métadonnées1"
           git push

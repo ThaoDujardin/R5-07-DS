@@ -24,8 +24,8 @@ jobs:
 
       - name: Commit et push
         run: |
-          git config user.email "thaodujardin@gmail.com"
-          git config user.name "thaodujardin"
+          git config user.name thaodujardin
+          git config user.email thaodujardin@gmail.com
           git add Q3_archive_java.txt
           git commit -m "Q3: archiver Q3.java1"
           git push
