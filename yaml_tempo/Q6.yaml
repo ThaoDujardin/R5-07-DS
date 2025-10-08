@@ -1,0 +1,47 @@
+name: Q6
+
+on: [push]
+
+permissions:
+  contents: write
+
+jobs:
+  archiver:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Générer archive Q6 (JJ-MM-AAAA-HHMMSS)
+        run: |
+          NAME="Thao Dujardin"
+          D="$(date '+%d-%m-%Y-%H%M%S')"
+          F="Q6_archive_${D}.txt"
+          {
+            echo "Nom et prénom: $NAME"
+            echo "===== Q6.java ====="
+            cat Q6.java
+            echo ""
+            echo "===== wc Q6.java ====="
+            wc -cl Q6.java | awk '{print "caractères=" $1 " lignes=" $2}'
+          } > "$F"
+          echo "FICHIER=$F" >> $GITHUB_ENV
+
+      - name: Générer Q6_différences.txt
+        run: |
+          PREV=$(ls -1 Q6_archive_*.txt 2>/dev/null | sort | tail -n 2 | head -n 1 || true)
+          CURR=$(ls -1 Q6_archive_*.txt 2>/dev/null | sort | tail -n 1 || true)
+          if [ -n "$PREV" ] && [ -n "$CURR" ]; then
+            diff -u "$PREV" "$CURR" > Q6_différences.txt || true
+          else
+            echo "Pas de version précédente pour comparaison" > Q6_différences.txt
+          fi
+
+      - name: Commit et push
+        run: |
+          git config user.name thaodujardin
+          git config user.email thaodujardin@gmail.com
+          git add Q6_archive_*.txt Q6_différences.txt
+          git commit -m "Q6: archive datée, wc et diff1"
+          git push
