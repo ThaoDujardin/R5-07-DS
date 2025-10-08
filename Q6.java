@@ -17,6 +17,7 @@ public class Q6
 			{
 				sb.append( 'x' );
 				sb.append(' ');
+				sb.append(' ');
 			}
 			System.out.println(sb.toString());
 		}
