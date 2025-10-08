@@ -40,8 +40,8 @@ jobs:
 
       - name: Commit et push
         run: |
-          git config user.email "thaodujardin@gmail.com"
-          git config user.name "thaodujardin"
+          git config user.name thaodujardin
+          git config user.email thaodujardin@gmail.com
           git add Q6_archive_*.txt Q6_différences.txt
           git commit -m "Q6: archive datée, wc et diff1"
           git push
